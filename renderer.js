@@ -40,9 +40,25 @@ function send() {
 // Call a user in a direct conversation
 function call() {
   client.makeCall(document.getElementById('email').value)
-    .then(console.log)
+    .then(call => _callId = call.callId)
     .catch(console.error)
 }
+
+let _callId;
+client.addEventListener('callStatus', evt => {
+  if (_callId && _callId !== evt.call.callId) {
+    console.log('callStatus event for a different call, ignore it');
+    return;
+  }
+  _callId = evt.call.callId;
+
+  if (evt.reason === 'remoteStreamUpdated') {
+    // Attach the stream to the audio element
+    remoteAudio = document.getElementById('remoteAudio');
+    remoteAudio.src = evt.call.remoteAudioUrl;
+    return;
+  }
+});
 
 // For debug purposes log all Circuit SDK events
 client.supportedEvents.forEach(e => client.addEventListener(e, console.log))
