@@ -1,0 +1,15 @@
+{
+  "name": "electron-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Roger Urscheler <roger.urscheler@unify.com>",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.9"
+  }
+}

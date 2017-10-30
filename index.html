@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Electron Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h3>Versions:</h3>
+    <ul>
+      <li>Node.js <script>document.write(process.versions.node)</script></li>
+      <li>Chromium <script>document.write(process.versions.chrome)</script></li>
+      <li>Electron <script>document.write(process.versions.electron)</script></li>
+    </ul>
+
+    <h3>Files:</h3>
+    <ul id="files"></ul>
+
+    <h3>Circuit:</h3>
+    <input id="username" width="300" placeholder="Username"/>
+    <input type="password" id="password" width="300" placeholder="Password"/>
+    <button onclick="login()">Login</button>
+
+    <h3>Send message:</h3>
+    <input id="email" width="300" placeholder="Email"/>
+    <input id="message" width="300" placeholder="Enter message"/>
+    <button onclick="send()">Send</button>
+    ... or call user <button onclick="call()">Call</button>
+  </body>
+
+  <script src="https://unpkg.com/circuit-sdk"></script>
+  <script src="renderer.js"></script>
+</html>
