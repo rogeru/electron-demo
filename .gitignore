@@ -65,3 +65,5 @@ config.json
 # VS code launch config
 .vscode/*
 !.vscode/launch.json
+
+release-builds

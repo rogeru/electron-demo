@@ -4,12 +4,21 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/mac/circuit.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-demo --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/win/circuit.ico --prune=true --out=release-builds --version-string.ProductName=\"Electron Demo\"",
+    "package-linux": "electron-packager . electron-demo --overwrite --asar --platform=linux --arch=x64 --icon=assets/circuit.png --prune=true --out=release-builds",
+    "build": "npm run package-mac && npm run package-win && npm run package-linux",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/electron-demo-darwin-x64/electron-demo.app electron-demo --out=release-builds --overwrite --icon=assets/mac/circuit.icns"
   },
   "keywords": [],
   "author": "Roger Urscheler <roger.urscheler@unify.com>",
   "license": "ISC",
   "dependencies": {
     "electron": "^1.7.9"
+  },
+  "devDependencies": {
+    "electron-installer-dmg": "^0.2.1",
+    "electron-packager": "^9.1.0"
   }
 }

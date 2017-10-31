@@ -1,5 +1,6 @@
 // main process (node)
 const {app, BrowserWindow, Menu, Tray, shell} = require('electron')
+const path = require('path')
 
 // Keep a global reference of the window and tray object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,7 +14,8 @@ app.on('ready', () => {
   // Create the browser window.
   win = new BrowserWindow({
     width: 1200,
-    height: 800
+    height: 800,
+    icon : path.join(__dirname, 'assets/win/circuit.ico') // For mac icon is defined in packaging
   })
 
   // and load the index.html of the app.
@@ -29,7 +31,7 @@ app.on('ready', () => {
     win = null;
   });
 
-  tray = new Tray('circuit.png')
+  tray = new Tray(path.join(__dirname, 'assets', 'circuit.png'))
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Open Circuit',
